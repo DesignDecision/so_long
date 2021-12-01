@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapchecks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergiopax <sergiopax@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 13:05:19 by sergiopax         #+#    #+#             */
-/*   Updated: 2021/11/30 16:17:52 by sergiopax        ###   ########.fr       */
+/*   Updated: 2021/12/01 09:30:56 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	checkrectangular(t_vars *vars)
 	{
 		if (vars->map[i] == '\n')
 			lines++;
-			i++;
+		i++;
 	}
 	if (vars->map[vars->lastrow + vars->row] != '\0')
 		maperror(vars);

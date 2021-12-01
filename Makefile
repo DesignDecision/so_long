@@ -1,36 +1,52 @@
-CC = gcc
-SRC =	*.c
-MINILIBXPATH = ./mlx
-LIBFTPATH = ./Libft
-NAME = so_long
-LIBRARY = libmlx.a
+CC			= gcc
+CFLAGS		= -Wall -Wextra -Werror -g
 
-all: $(LIBRARY) libft.a $(NAME)
+RM			= rm -f
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlxmac -c $< -o $@
+NAME		= solong
 
-$(NAME): $(SRC)
-	$(CC) -g -Lmlx -L $(MINILIBXPATH) -lmlx -framework OpenGL -framework AppKit -L $(LIBFTPATH) -lft $(SRC)
+LIB_PATH	= ./Libft
+INCL_PATH	= ./Libft
+
+LIBRARY		= libft.a
+
+MINI_PATH	= ./minilibx-linux
+MINI_INCL	= ./minilibx-linux
+
+MAKE		= make
+
+SRC			= exits.c loadmap.c loadtiles.c mapchecks.c movement.c so_long.c
+
+OBJ			= ${SRC:.c=.o}
+
+LINKS		= -I$(INCL_PATH) \
+			-I$(MINI_INCL) \
+			-L $(MINI_PATH) -lmlx \
+			-L $(LIB_PATH) -lft \
+			-lX11 -lXext -lm
+
+all:		$(LIBRARY) $(NAME)
 
 
 $(LIBRARY):
-	make -C $(MINILIBXPATH)
-	cp $(MINILIBXPATH)/$(LIBRARY) .
-	cp $(MINILIBXPATH)/mlx.h .
+			$(MAKE) -C $(LIB_PATH)
+			$(MAKE) -C $(MINI_PATH)
 
-libft.a:
-	make -C $(LIBFTPATH)
+$(NAME):	$(OBJ)
+			$(CC) -o $(NAME) $(CFLAGS) $(OBJ) $(LINKS) 
 
-archive:
-	ar rc $(NAME) $(OBJS)
+clean:		
+			$(RM) $(OBJ)
 
-clean:
-	/bin/rm -f $(OBJS) a.out mlx.h
+fclean:		clean
+			$(RM) $(NAME)
+			$(MAKE) -C $(LIB_PATH) fclean
+			$(MAKE) -C $(MINI_PATH) clean
 
-fclean: clean
-	/bin/rm -f $(NAME) $(LIBRARY)
-	make -C $(LIBFTPATH) fclean
-	make -C $(MINILIBXPATH) clean
+re:			fclean all
+#Command runs norminette only for my files, not on mlx library
+norm:
+			norminette libft/
+			norminette $(SRC) || true
 
-re: fclean all
+.PHONY: all clean fclean re norm
