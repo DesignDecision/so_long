@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergiopax <sergiopax@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 15:44:36 by spax              #+#    #+#             */
-/*   Updated: 2021/12/01 07:57:32 by sergiopax        ###   ########.fr       */
+/*   Updated: 2021/12/01 09:51:39 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,15 @@ void	loadmap(t_vars *vars)
 	}
 }
 
-int	exit_game(int keycode, t_vars *vars)
+int	exit_game(t_vars *vars)
 {
+	if (vars->map)
+		free(vars->map);
+	if (vars->img.img)
+		mlx_destroy_image(vars->mlx, vars->img.img);
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
 	exit(1);
 }
 
@@ -82,8 +89,8 @@ int	main(int argc, char **argv )
 {
 	t_vars	vars;
 	int		fd;
-	int		i;
 
+	(void)argc;
 	vars.map = NULL;
 	vars.win = NULL;
 	vars.mlx = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   loadmap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergiopax <sergiopax@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 15:18:53 by sergiopax         #+#    #+#             */
-/*   Updated: 2021/11/30 18:35:10 by sergiopax        ###   ########.fr       */
+/*   Updated: 2021/12/01 09:30:11 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	checkarg(t_vars *vars, char **argv)
 {
 	int	len;
 
+	(void)vars;
 	len = ft_strlen(argv[1]);
 	if (argv[1][len - 1] != 'r' || argv[1][len - 2] != 'e' ||
 	argv[1][len - 3] != 'b' || argv[1][len - 4] != '.')

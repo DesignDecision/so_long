@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergiopax <sergiopax@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:20:19 by spax              #+#    #+#             */
-/*   Updated: 2021/11/30 18:38:17 by sergiopax        ###   ########.fr       */
+/*   Updated: 2021/12/01 09:45:27 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx/mlx.h"
-# include "so_long.h"
-# include "Libft/libft.h"
+# include "./minilibx-linux/mlx.h"
+# include "./Libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -73,7 +72,7 @@ void	*load_wall(t_vars *vars);
 void	*load_player(t_vars *vars);
 void	*load_exit(t_vars *vars);
 void	*load_coin(t_vars *vars);
-int		exit_game(int keycode, t_vars *vars);
+int		exit_game(t_vars *vars);
 int		moveplayer(int keycode, t_vars *vars);
 void	scanstring(t_vars *vars);
 void	exitopen(int keycode, t_vars *vars);

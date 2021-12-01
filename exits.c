@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exits.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sergiopax <sergiopax@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ioleinik <ioleinik@student.42wolfsburg.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 14:58:46 by sergiopax         #+#    #+#             */
-/*   Updated: 2021/12/01 07:42:49 by sergiopax        ###   ########.fr       */
+/*   Updated: 2021/12/01 09:29:11 by ioleinik         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	exitclosed1(int keycode, t_vars *vars)
 		mlx_destroy_window(vars->mlx, vars->win);
 		exit(1);
 	}
-	if (keycode == 13 && vars->map[vars->player - vars->row] != '1'
+	if (keycode == 13 && (vars->map[vars->player - vars->row] != '1')
 		&& vars->map[vars->player - vars->row] != 'E' )
 	{
 		vars->map[vars->player - vars->row] = 'P';
@@ -39,8 +39,8 @@ void	exitclosed1(int keycode, t_vars *vars)
 
 void	exitclosed2(int keycode, t_vars *vars)
 {
-	if (keycode == 1 && vars->map[vars->player + vars->row] != '1'
-		& vars->map[vars->player + vars->row] != 'E')
+	if (keycode == 1 && (vars->map[vars->player + vars->row] != '1')
+		&& vars->map[vars->player + vars->row] != 'E')
 	{
 		vars->map[vars->player + vars->row] = 'P';
 		vars->map[vars->player] = '0';
